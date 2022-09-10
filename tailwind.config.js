@@ -6,7 +6,16 @@ module.exports = {
       "./resources/**/*.vue",
   ],
   theme: {
-    extend: {},
+    extend: {
+        fontFamily: {
+            'inter': ['Inter', 'sans-serif']
+        },
+        colors: {
+            'custom-grey':'#808189',
+            'custom-indigo':'#2029F3',
+            'custom-green': '#0FBA68',
+        }
+    },
   },
   plugins: [],
 }
