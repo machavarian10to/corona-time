@@ -4,42 +4,39 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Support\Facades\Route;
 
-Route::view('/register', 'users.register')->name('register')
-	->middleware('guest');
+Route::controller(RegisterController::class)->group(function () {
+	Route::post('/register', 'register')
+		->name('user.register')
+		->middleware('guest');
+	Route::get('/email/verify/{id}/{hash}', 'verify')->name('verification.verify');
+});
 
-Route::post('/register', [RegisterController::class, 'register'])
-	->name('user.register')->middleware('guest');
+Route::controller(LoginController::class)->group(function () {
+	Route::middleware('guest')->group(function () {
+		Route::post('/login', 'login')->name('user.login');
+		Route::post('/forgot-password', 'passwordRequest')->name('password.request');
+		Route::get('/reset-password/{token}', 'resetPassword')->name('password.reset');
+		Route::post('/reset-password', 'updatePassword')->name('password.update');
+	});
+	Route::post('/logout', 'logout')
+		->name('logout')->middleware('auth');
+});
 
-Route::view('/feedback', 'auth.feedback')
-	->name('feedback');
+Route::middleware('guest')->group(function () {
+	Route::view('/register', 'users.register')->name('register');
+	Route::view('/login', 'users.login')->name('login');
+	Route::view('/forgot-password', 'password-reset.forgot-password')->name('forgot.password');
+});
 
-Route::view('/email/verify', 'auth.verify-email')
-	->name('verification.notice');
+Route::view('/feedback', 'auth.feedback')->name('feedback');
 
-Route::get('/email/verify/{id}/{hash}', [RegisterController::class, 'verify'])
-	->name('verification.verify');
+Route::view('/email/verify', 'auth.verify-email')->name('verification.notice');
 
-Route::view('/verified', 'auth.user-verified')
-	->name('user.verified');
+Route::view('/verified-feedback', 'auth.user-verified')->name('user.verified');
 
-Route::view('/login', 'users.login')
-	->name('login')->middleware('guest');
+Route::view('/forgot-feedback', 'password-reset.forgot-feedback')->name('forgot.feedback');
 
-Route::post('/login', [LoginController::class, 'login'])
-	->name('user.login')->middleware('guest');
+Route::view('/reset-feedback', 'password-reset.reset-feedback')->name('reset.feedback');
 
-Route::post('/logout', [LoginController::class, 'logout'])
-    ->name('logout')->middleware('auth');
-
-Route::get('/', function () {
-	return 'landing page';
-})->name('home')->middleware('auth');
-
-Route::get('/forget-password', function () {
-	return 'forget password';
-})->name('forget');
-
-Route::view('/dashboard', 'dashboard')
+Route::view('/', 'dashboard')
 	->name('dashboard')->middleware(['auth', 'verified']);
-
-Route::view('test', 'email.verify');

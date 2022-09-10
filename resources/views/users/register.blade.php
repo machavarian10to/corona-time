@@ -1,7 +1,7 @@
 <x-layout>
     <form method="POST" action="{{ route('user.register') }}">
         @csrf
-        <x-template>
+        <x-auth-template>
             <x-title name="Welcome to Coronatime" />
 
             <x-subtitle name="Please enter required info to sign up" />
@@ -32,6 +32,6 @@
                              link="{{ route('login') }}"
                              title="Log in"
             />
-        </x-template>
+        </x-auth-template>
     </form>
 </x-layout>

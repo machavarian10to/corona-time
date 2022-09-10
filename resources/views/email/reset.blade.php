@@ -46,12 +46,12 @@
 <div>
     <img src="{{ URL('storage/email-verification.png') }}" />
 
-    <h2>Confirmation email</h2>
+    <h2>Recover password</h2>
 
-    <h3>click this button to verify your email</h3>
+    <h3>click this button to recover a password</h3>
 
     <a href="{{ $url }}">
-        <button>VERIFY EMAIL</button>
+        <button>RECOVER PASSWORD</button>
     </a>
 </div>
 

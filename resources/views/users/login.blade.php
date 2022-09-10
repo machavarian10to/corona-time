@@ -1,7 +1,8 @@
 <x-layout>
     <form method="POST" action="{{ route('user.login') }}">
+
         @csrf
-        <x-template>
+        <x-auth-template>
             <x-title name="Welcome back" />
 
             <x-subtitle name="Welcome back! Please enter your details" />
@@ -15,7 +16,7 @@
             <div>
                 <x-remember-device />
 
-                <a href="{{ route('forget') }}"
+                <a href="{{ route('forgot.password') }}"
                    class="ml-20 text-custom-indigo font-semibold text-sm"
                 >
                     Forget password?
@@ -28,6 +29,6 @@
                              link="{{ route('register') }}"
                              title="Sign up for free"
             />
-        </x-template>
+        </x-auth-template>
     </form>
 </x-layout>
