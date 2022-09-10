@@ -18,8 +18,7 @@ class LoginController extends Controller
 {
 	public function login(LoginUserRequest $request): RedirectResponse
 	{
-		$remember = $request->has('remember') ? true : false;
-		if (!auth()->attempt($request->validated(), $remember))
+		if (!auth()->attempt($request->validated(), $request->has('remember')))
 		{
 			throw ValidationException::withMessages([
 				'username' => 'Name not found!',
