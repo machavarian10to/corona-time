@@ -2,7 +2,15 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\StatisticController;
 use Illuminate\Support\Facades\Route;
+
+
+Route::get('/', [StatisticController::class, 'index'])
+    ->name('dashboard')->middleware(['auth', 'verified']);
+
+Route::view('/country', 'country')
+    ->name('country')->middleware(['auth', 'verified']);
 
 Route::controller(RegisterController::class)->group(function () {
 	Route::post('/register', 'register')
@@ -38,5 +46,4 @@ Route::view('/forgot-feedback', 'password-reset.forgot-feedback')->name('forgot.
 
 Route::view('/reset-feedback', 'password-reset.reset-feedback')->name('reset.feedback');
 
-Route::view('/', 'dashboard')
-	->name('dashboard')->middleware(['auth', 'verified']);
+

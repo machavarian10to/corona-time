@@ -3,7 +3,7 @@
         @csrf
         <div class="flex items-center mt-10 flex-col">
             <img src="{{ URL('storage/logo.svg') }}"  />
-            <div class="flex flex-col items-center mt-44">
+            <div class="flex flex-col items-center mt-20">
                 <x-title name="Reset Password" class="mb-16" />
 
                 <x-input type="email" name="email" title="Email"

@@ -14,7 +14,8 @@ module.exports = {
             'custom-grey':'#808189',
             'custom-indigo':'#2029F3',
             'custom-green': '#0FBA68',
-        }
+            'custom-yellow': '#EAD621'
+        },
     },
   },
   plugins: [],
