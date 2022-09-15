@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Statistic;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
+use Ramsey\Uuid\Type\Integer;
 
 class GetStatistics extends Command
 {
@@ -27,7 +28,7 @@ class GetStatistics extends Command
 	 *
 	 * @return int
 	 */
-	public function handle()
+	public function handle(): string
 	{
 		$countries = Http::get('https://devtest.ge/countries')->json();
 
@@ -45,6 +46,6 @@ class GetStatistics extends Command
 			$statistic->deaths = $response['deaths'];
 			$statistic->save();
 		}
-		return 0;
+		return 'Covid statistic has been fetched!';
 	}
 }

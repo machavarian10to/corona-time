@@ -5,17 +5,13 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\StatisticController;
 use Illuminate\Support\Facades\Route;
 
-
-Route::get('/', [StatisticController::class, 'index'])
-    ->name('dashboard')->middleware(['auth', 'verified']);
-
-Route::view('/country', 'country')
-    ->name('country')->middleware(['auth', 'verified']);
+Route::controller(StatisticController::class)->group(function () {
+	Route::get('/', 'index')->name('dashboard')->middleware(['auth', 'verified']);
+	Route::get('/country', 'show')->name('country')->middleware(['auth', 'verified']);
+});
 
 Route::controller(RegisterController::class)->group(function () {
-	Route::post('/register', 'register')
-		->name('user.register')
-		->middleware('guest');
+	Route::post('/register', 'register')->name('user.register')->middleware('gust');
 	Route::get('/email/verify/{id}/{hash}', 'verify')->name('verification.verify');
 });
 
@@ -26,8 +22,7 @@ Route::controller(LoginController::class)->group(function () {
 		Route::get('/reset-password/{token}', 'resetPassword')->name('password.reset');
 		Route::post('/reset-password', 'updatePassword')->name('password.update');
 	});
-	Route::post('/logout', 'logout')
-		->name('logout')->middleware('auth');
+	Route::post('/logout', 'logout')->name('logout')->middleware('auth');
 });
 
 Route::middleware('guest')->group(function () {
@@ -45,5 +40,3 @@ Route::view('/verified-feedback', 'auth.user-verified')->name('user.verified');
 Route::view('/forgot-feedback', 'password-reset.forgot-feedback')->name('forgot.feedback');
 
 Route::view('/reset-feedback', 'password-reset.reset-feedback')->name('reset.feedback');
-
-
