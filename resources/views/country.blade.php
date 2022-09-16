@@ -1,12 +1,12 @@
 <x-layout>
-    <x-dashboard-template title="Statistics by country">
+    <x-dashboard-template title="{{ __('general.stats_by_country') }}">
         <div class="border-b my-[50px]">
             <div class="flex w-[250px] justify-between ">
                 <a href="{{ route('dashboard') }}">
-                    <p>Worldwide</p>
+                    <p>{{ __('general.worldwide') }}</p>
                 </a>
                 <p class="font-bold border-b-4 border-b-black h-[40px]">
-                    By country
+                    {{ __('general.country') }}
                 </p>
             </div>
         </div>
@@ -24,7 +24,7 @@
                     name="search"
                     class="pl-12 w-[240px] h-[48px] rounded-lg border
                     border-gray-300 text-sm focus:border-none"
-                    placeholder="Search by country"
+                    placeholder="{{ __('general.search') }}"
                     value="{{ request('search') }}"
                 >
             </div>
@@ -36,28 +36,28 @@
                     <tr class="bg-table-header font-semibold text-sm ">
                         <th>
                             <x-table-header
-                                name="Location"
+                                name="{{ __('general.location') }}"
                                 value="country"
                                 sort="{{ 'country' }}"
                             />
                         </th>
                         <th>
                             <x-table-header
-                                name="New cases"
+                                name="{{ __('general.new_cases') }}"
                                 value="confirmed"
                                 sort="{{ 'confirmed' }}"
                             />
                         </th>
                         <th>
                             <x-table-header
-                                name="Deaths"
+                                name="{{ __('general.deaths') }}"
                                 value="deaths"
                                 sort="{{ 'deaths' }}"
                             />
                         </th>
                         <th>
                             <x-table-header
-                                name="Recovered"
+                                name="{{ __('general.recovered') }}"
                                 value="recovered"
                                 sort="{{ 'recovered' }}"
                             />
@@ -67,7 +67,7 @@
 
                 <tbody>
                     <tr class="border-[1px] text-center h-[50px]">
-                        <td>Worldwide</td>
+                        <td>{{ __('general.worldwide') }}</td>
                         <td>{{ $general->pluck('confirmed')->sum() }}</td>
                         <td>{{ $general->pluck('deaths')->sum() }}</td>
                         <td>{{ $general->pluck('recovered')->sum() }}</td>

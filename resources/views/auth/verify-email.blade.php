@@ -1,3 +1,3 @@
 <x-layout>
-    <x-confirmation name="You should verify your email first!" />
+    <x-confirmation name="{{__('general.verify_first')}}" />
 </x-layout>

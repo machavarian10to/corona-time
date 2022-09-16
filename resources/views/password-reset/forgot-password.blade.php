@@ -4,10 +4,10 @@
         <div class="flex items-center mt-10 flex-col">
             <img src="{{ URL('storage/logo.svg') }}"  />
             <div class="flex flex-col items-center mt-20">
-                <x-title name="Reset Password" class="mb-16" />
+                <x-title name="{{ __('general.reset_password') }}" class="mb-16" />
 
-                <x-input type="email" name="email" title="Email"
-                         placeholder="Enter your email"
+                <x-input type="email" name="email" title="{{ __('general.email') }}"
+                         placeholder="{{ __('general.email_placeholder') }}"
                 />
             </div>
         </div>
@@ -16,7 +16,7 @@
             <button type="submit" class="mt-6 w-[392px] h-[56px] bg-custom-green
                         rounded-lg text-white font-black hover:bg-opacity-90"
             >
-                RESET PASSWORD
+                {{ __('general.reset') }}
             </button>
         </div>
     </form>

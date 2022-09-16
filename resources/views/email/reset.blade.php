@@ -46,12 +46,12 @@
 <div>
     <img src="{{ URL('storage/email-verification.png') }}" />
 
-    <h2>Recover password</h2>
+    <h2>{{ __('general.recover') }}</h2>
 
-    <h3>click this button to recover a password</h3>
+    <h3>{{ __('general.click_for_recover') }}</h3>
 
     <a href="{{ $url }}">
-        <button>RECOVER PASSWORD</button>
+        <button>{{ __('general.recover_password') }}</button>
     </a>
 </div>
 

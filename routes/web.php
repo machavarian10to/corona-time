@@ -2,17 +2,13 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\StatisticController;
 use Illuminate\Support\Facades\Route;
 
-Route::controller(StatisticController::class)->group(function () {
-	Route::get('/', 'index')->name('dashboard')->middleware(['auth', 'verified']);
-	Route::get('/country', 'show')->name('country')->middleware(['auth', 'verified']);
-});
-
 Route::controller(RegisterController::class)->group(function () {
-	Route::post('/register', 'register')->name('user.register')->middleware('gust');
-	Route::get('/email/verify/{id}/{hash}', 'verify')->name('verification.verify');
+	Route::post('/register', 'register')->name('user.register')->middleware('guest');
+	Route::get('/email-verify/{id}/{hash}', 'verify')->name('verification.verify');
 });
 
 Route::controller(LoginController::class)->group(function () {
@@ -24,6 +20,14 @@ Route::controller(LoginController::class)->group(function () {
 	});
 	Route::post('/logout', 'logout')->name('logout')->middleware('auth');
 });
+
+Route::controller(StatisticController::class)->group(function () {
+	Route::get('/', 'index')->name('dashboard')->middleware(['auth', 'verified']);
+	Route::get('/country', 'show')->name('country')->middleware(['auth', 'verified']);
+});
+
+Route::get('/change-locale/{locale}', [LocaleController::class, 'changeLocale'])
+	->name('change.locale');
 
 Route::middleware('guest')->group(function () {
 	Route::view('/register', 'users.register')->name('register');

@@ -46,12 +46,12 @@
 <div>
     <img src="{{ URL('storage/email-verification.png') }}" />
 
-    <h2>Confirmation email</h2>
+    <h2>{{ __('general.confirm_email') }}</h2>
 
-    <h3>click this button to verify your email</h3>
+    <h3>{{ __('general.click_for_verify') }}</h3>
 
     <a href="{{ $url }}">
-        <button>VERIFY EMAIL</button>
+        <button>{{ __('general.verify_email') }}</button>
     </a>
 </div>
 

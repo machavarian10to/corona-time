@@ -6,14 +6,16 @@
 
         <div class="flex items-center mr-[90px]">
             <div class="cursor-pointer">
-                English<i class="fa-sharp fa-solid fa-chevron-down ml-2"></i>
+                <a href="{{ app()->getLocale() === 'ka' ? route('change.locale', 'en') : route('change.locale', 'ka') }}">
+                    {{ app()->getLocale() === 'ka' ? 'English' : 'ქართული' }}
+                </a>
             </div>
             <h2 class="mx-[40px] font-bold">{{ auth()->user()->username }}</h2>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <div class="border-l px-5">
                     <button class="cursor-pointer h-[40px] font-medium text-sm" type="submit">
-                        Log Out
+                        {{__('general.logout')}}
                     </button>
                 </div>
             </form>
