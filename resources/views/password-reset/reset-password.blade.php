@@ -7,14 +7,14 @@
             <input type="hidden" name="token" value="{{ $token }}">
 
             <div class="mt-40">
-                <x-input type="email" name="email" title="Email"
-                         placeholder="Enter your email" />
+                <x-input type="email" name="email" title="{{ __('general.email') }}"
+                         placeholder="{{ __('general.email_placeholder') }}" />
 
-                <x-input type="password" name="password" title="New Password"
-                         placeholder="Enter new password" />
+                <x-input type="password" name="password" title="{{ __('general.new_password') }}"
+                         placeholder="{{ __('general.new_password_placeholder') }}" />
 
                 <x-input type="password" name="password_confirmation"
-                         title="Repeat password" placeholder="Repeat password" />
+                         title="{{ __('general.repeat_password') }}" placeholder="{{ __('general.repeat_password') }}" />
             </div>
         </div>
 
@@ -22,7 +22,7 @@
             <button type="submit" class="mt-6 w-[392px] h-[56px] bg-custom-green
                     rounded-lg text-white font-black hover:bg-opacity-90"
             >
-                SAVE CHANGES
+                {{ __('general.save_changes') }}
             </button>
         </div>
     </form>

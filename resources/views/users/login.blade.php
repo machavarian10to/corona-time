@@ -3,31 +3,31 @@
 
         @csrf
         <x-auth-template>
-            <x-title name="Welcome back" />
+            <x-title name="{{ __('general.welcome') }}" />
 
-            <x-subtitle name="Welcome back! Please enter your details" />
+            <x-subtitle name="{{ __('general.enter_details') }}" />
 
-            <x-input type="text" name="username" title="Username"
-                     placeholder="Enter unique username or email" />
+            <x-input type="text" name="username" title="{{ __('general.username') }}"
+                     placeholder="{{ __('general.user_placeholder') }}" />
 
-            <x-input type="password" name="password" title="Password"
-                     placeholder="Fill in password" />
+            <x-input type="password" name="password" title="{{ __('general.password') }}"
+                     placeholder="{{ __('general.password_placeholder') }}" />
 
             <div>
                 <x-remember-device />
 
                 <a href="{{ route('forgot.password') }}"
-                   class="ml-20 text-custom-indigo font-semibold text-sm"
+                   class="ml-12 text-custom-indigo font-semibold text-sm"
                 >
-                    Forget password?
+                    {{ __('general.forget') }}
                 </a>
             </div>
 
-            <x-button name="LOG IN" />
+            <x-button name="{{ __('general.login') }}" />
 
-            <x-redirect-link name="Don’t have and account?"
+            <x-redirect-link name="{{ __('general.dont_have_account') }}"
                              link="{{ route('register') }}"
-                             title="Sign up for free"
+                             title="{{ __('general.signup_free') }}"
             />
         </x-auth-template>
     </form>

@@ -16,7 +16,11 @@ class Statistic extends Model
 
 	public function scopeFilter($query, array $filters)
 	{
-		$query->when($filters['search'] ?? false, fn ($query, $search) => $query
-				->where('country', 'like', '%' . substr($search, 1) . '%'));
+		return $query->when(
+			$filters['search'] ?? false,
+			fn ($query, $search) => app()->getLocale() === 'ka' ?
+			$query->where('country->ka', 'like', '%' . $search . '%')
+			: $query->where('country->en', 'like', '%' . substr($search, 1) . '%')
+		);
 	}
 }

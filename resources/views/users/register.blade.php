@@ -2,35 +2,35 @@
     <form method="POST" action="{{ route('user.register') }}">
         @csrf
         <x-auth-template>
-            <x-title name="Welcome to Coronatime" />
+            <x-title name="{{ __('general.welcome_register') }}" />
 
-            <x-subtitle name="Please enter required info to sign up" />
+            <x-subtitle name="{{ __('general.enter_info') }}" />
 
-            <x-input type="text" name="username" title="Username"
-                     placeholder="Enter unique username" />
+            <x-input type="text" name="username" title="{{ __('general.username') }}"
+                     placeholder="{{ __('general.username_placeholder') }}" />
 
             <p class="text-sm text-custom-grey mb-3">
-                Username should be unique, min 3 symbols
+                {{ __('general.user_symbols') }}
             </p>
 
-            <x-input type="email" name="email" title="Email"
-                     placeholder="Enter your email" />
+            <x-input type="email" name="email" title="{{ __('general.email') }}"
+                     placeholder="{{ __('general.email_placeholder') }}" />
 
-            <x-input type="password" name="password" title="Password"
-                     placeholder="Fill in password" />
+            <x-input type="password" name="password" title="{{ __('general.password') }}"
+                     placeholder="{{ __('general.password_placeholder') }}" />
 
             <x-input type="password" name="password_confirmation"
-                     title="Repeat password" placeholder="Repeat password" />
+                     title="{{ __('general.repeat_password') }}" placeholder="{{ __('general.repeat_password') }}" />
 
             <div>
                 <x-remember-device />
             </div>
 
-            <x-button name="SIGN UP" />
+            <x-button name="{{ __('general.signup') }}" />
 
-            <x-redirect-link name="Already have an account?"
+            <x-redirect-link name="{{ __('general.have_an_account') }}"
                              link="{{ route('login') }}"
-                             title="Log in"
+                             title="{{ __('general.login_lower') }}"
             />
         </x-auth-template>
     </form>

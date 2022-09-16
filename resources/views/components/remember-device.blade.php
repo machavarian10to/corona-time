@@ -8,5 +8,5 @@
     for="remember"
     class="text-sm font-semibold ml-0.5"
 >
-    Remember this device
+   {{ __('general.remember') }}
 </label>
