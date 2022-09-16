@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::controller(RegisterController::class)->group(function () {
 	Route::post('/register', 'register')->name('user.register')->middleware('guest');
-	Route::get('/email/verify/{id}/{hash}', 'verify')->name('verification.verify');
+	Route::get('/email-verify/{id}/{hash}', 'verify')->name('verification.verify');
 });
 
 Route::controller(LoginController::class)->group(function () {
