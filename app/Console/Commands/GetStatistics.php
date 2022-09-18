@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\Models\Statistic;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
-use Ramsey\Uuid\Type\Integer;
 
 class GetStatistics extends Command
 {
@@ -30,6 +29,8 @@ class GetStatistics extends Command
 	 */
 	public function handle(): string
 	{
+		Statistic::truncate();
+
 		$countries = Http::get('https://devtest.ge/countries')->json();
 
 		foreach ($countries as $country)
@@ -39,7 +40,7 @@ class GetStatistics extends Command
 			])->json();
 
 			$statistic = new Statistic();
-			$statistic->country = json_encode($country['name']);
+			$statistic->country = $country['name'];
 			$statistic->code = $response['code'];
 			$statistic->confirmed = $response['confirmed'];
 			$statistic->recovered = $response['recovered'];

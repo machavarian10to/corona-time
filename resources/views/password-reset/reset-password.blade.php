@@ -1,12 +1,12 @@
 <x-layout>
     <form method="POST" action="{{ route('password.update') }}">
         @csrf
-        <div class="flex items-center mt-12 flex-col">
+        <div class="flex items-center mt-8 flex-col">
             <img src="{{ URL('storage/logo.svg') }}"  />
 
             <input type="hidden" name="token" value="{{ $token }}">
 
-            <div class="mt-40">
+            <div class="mt-20">
                 <x-input type="email" name="email" title="{{ __('general.email') }}"
                          placeholder="{{ __('general.email_placeholder') }}" />
 
@@ -19,7 +19,7 @@
         </div>
 
         <div class="text-center mt-5">
-            <button type="submit" class="mt-6 w-[392px] h-[56px] bg-custom-green
+            <button type="submit" class="mt-4 w-[343px] md:w-[392px] h-[56px] bg-custom-green
                     rounded-lg text-white font-black hover:bg-opacity-90"
             >
                 {{ __('general.save_changes') }}

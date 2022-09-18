@@ -6,11 +6,12 @@
         align-items: center;
         justify-content: center;
     }
+
     * {
         font-family: 'Inter';
     }
 
-    div{
+    .wrapper{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -28,6 +29,8 @@
         font-size: 18px;
         color: #010414;
         margin: 30px;
+        text-align: center;
+        line-height: 1.5;
     }
 
     button {
@@ -41,10 +44,51 @@
         cursor: pointer;
         border: none;
     }
+
+    .img-wrapper{
+        max-width: 520px;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    @media (max-width: 375px) {
+        .img-wrapper {
+            width: 300px;
+        }
+
+        button {
+            width: 300px;
+        }
+    }
+
+    @media (min-width: 375px) {
+        .img-wrapper {
+            width: 343px;
+        }
+
+        button {
+            width: 343px;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .img-wrapper{
+            width: 520px;
+        }
+
+        button {
+            width: 392px;
+        }
+    }
 </style>
 
-<div>
-    <img src="{{ URL('storage/email-verification.png') }}" />
+<div class="wrapper">
+    <div class="img-wrapper">
+        <img src="{{ URL('storage/email-verification.png') }}" />
+    </div>
 
     <h2>{{ __('general.recover') }}</h2>
 

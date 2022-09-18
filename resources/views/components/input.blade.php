@@ -16,9 +16,12 @@
             name="{{ $name }}"
             value="{{ old($name) }}"
             placeholder="{{ $placeholder }}"
-            class=" w-[400px] h-[60px] appearance-none rounded-md border
-            border-gray-300 px-6 py-2 shadow-sm focus:border-custom-indigo
-            focus:outline-none focus:custom-indigo"
+            class="form-input w-[350px] h-[60px] md:w-[400px]   appearance-none rounded-md border
+            border-gray-300
+            px-6 py-2 shadow-sm
+            focus:border-custom-indigo
+            focus:outline-none focus:custom-indigo
+            "
         />
     </div>
 
