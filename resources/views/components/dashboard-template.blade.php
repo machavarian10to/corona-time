@@ -2,7 +2,7 @@
 
 <header>
     <div class="flex justify-between p-[10px] border-b">
-        <img src="{{ URL('storage/logo.svg') }}" class="md:ml-[100px]" />
+        <img src="{{ URL('/images/logo.svg') }}" class="md:ml-[100px]" />
 
         <div class="flex items-center md:mr-[90px]">
             <div class="cursor-pointer mr-[5px] ml-[15px] md:mr-5">
@@ -22,7 +22,7 @@
             </form>
 
             <div x-data="{ open: false }" class="md:hidden relative">
-                <img @click="open = ! open" x-show="!open"  src="{{ URL('storage/burger.png') }}" class="cursor-pointer md:hidden"/>
+                <img @click="open = ! open" x-show="!open"  src="{{ URL('/images/burger.png') }}" class="cursor-pointer md:hidden"/>
 
                 <i x-show="open" @click="open = false" class="absolute left-3 cursor-pointer fa-solid fa-xmark"></i>
 

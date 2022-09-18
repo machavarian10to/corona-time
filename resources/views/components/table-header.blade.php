@@ -3,7 +3,6 @@
 
 <form method="GET" action="{{ route('country') }}" class="flex justify-around">
     <button name="sortby" value="{{ $value }}" type="submit" class="flex items-center">
-{{--        {{ strlen($name) }}--}}
         {{
             app()->getLocale() === 'ka' && strlen($name) > 27
             ? Str::of($name)->limit(7)

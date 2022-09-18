@@ -14,29 +14,38 @@
         <div class="flex justify-center flex-wrap gap-3 p-2
                     md:flex-nowrap md:items-baseline md:p-0 md:justify-between ">
 
-            <x-statistic-card
-                bg="{{'indigo'}}"
-                stat_img="{{ URL('storage/new.png') }}"
-                title="{{ __('general.new_cases') }}"
-                amount="{{ $statistic->pluck('confirmed')->sum() }}"
-                color="text-custom-indigo"
-            />
+            <div class="bg-indigo-block basis-[343px]
+            h-[193px] md:basis-auto md:h-[255px] md:w-[392px]
+            rounded-2xl flex flex-col justify-center items-center">
+                <x-statistic-card
+                    stat_img="{{ URL('images/new.png') }}"
+                    title="{{ __('general.new_cases') }}"
+                    amount="{{ $statistic->pluck('confirmed')->sum() }}"
+                    color="text-custom-indigo"
+                />
+            </div>
 
-            <x-statistic-card
-                bg="{{'green'}}"
-                stat_img="{{ URL('storage/recovered.png') }}"
-                title="{{ __('general.recovered') }}"
-                amount="{{ $statistic->pluck('recovered')->sum() }}"
-                color="text-custom-green"
-            />
+            <div class="bg-green-block basis-[164px]
+            h-[193px] md:basis-auto md:h-[255px] md:w-[392px]
+            rounded-2xl flex flex-col justify-center items-center">
+                <x-statistic-card
+                    stat_img="{{ URL('images/recovered.png') }}"
+                    title="{{ __('general.recovered') }}"
+                    amount="{{ $statistic->pluck('recovered')->sum() }}"
+                    color="text-custom-green"
+                />
+            </div>
 
-            <x-statistic-card
-                bg="{{'yellow'}}"
-                stat_img="{{ URL('storage/death.png') }}"
-                title="{{ __('general.deaths') }}"
-                amount="{{ $statistic->pluck('deaths')->sum() }}"
-                color="text-custom-yellow"
-            />
+            <div class="bg-yellow-block basis-[164px]
+            h-[193px] md:basis-auto md:h-[255px] md:w-[392px]
+            rounded-2xl flex flex-col justify-center items-center">
+                <x-statistic-card
+                    stat_img="{{ URL('images/death.png') }}"
+                    title="{{ __('general.deaths') }}"
+                    amount="{{ $statistic->pluck('deaths')->sum() }}"
+                    color="text-custom-yellow"
+                />
+            </div>
         </div>
     </x-dashboard-template>
 </x-layout>

@@ -1,101 +1,47 @@
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div style="text-align: center">
 
-<style>
-    body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+        <div style="max-width: 520px; height: 365px; margin: 10px auto; padding: 10px">
+            <img style="width: 100%; height: 100%" src="{{ url('https://res.cloudinary.com/dt5wsfrex/image/upload/v1663517694/email-verification_raalr9.png') }}" />
+        </div>
 
-    * {
-        font-family: 'Inter';
-    }
+        <h2 style="font-family: 'Inter';
+                font-weight: 900;
+                font-size: 25px;
+                color: #010414;"
+        >{{ __('general.recover') }}</h2>
 
-    .wrapper{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+        <h3 style="font-family: 'Inter';
+                font-weight: 400;
+                font-size: 18px;
+                color: #010414;
+                text-align: center;
+                line-height: 1.5;"
+        >{{ __('general.click_for_recover') }}</h3>
 
-    h2{
-        font-weight: 900;
-        font-size: 25px;
-        color: #010414;
-    }
-
-    h3{
-        font-weight: 400;
-        font-size: 18px;
-        color: #010414;
-        margin: 30px;
-        text-align: center;
-        line-height: 1.5;
-    }
-
-    button {
-        width: 392px;
-        height: 56px;
-        background: #0FBA68;
-        border-radius: 8px;
-        font-weight: 900;
-        font-size: 16px;
-        color: #FFFFFF;
-        cursor: pointer;
-        border: none;
-    }
-
-    .img-wrapper{
-        max-width: 520px;
-    }
-
-    img {
-        width: 100%;
-        height: 100%;
-    }
-
-    @media (max-width: 375px) {
-        .img-wrapper {
-            width: 300px;
-        }
-
-        button {
-            width: 300px;
-        }
-    }
-
-    @media (min-width: 375px) {
-        .img-wrapper {
-            width: 343px;
-        }
-
-        button {
-            width: 343px;
-        }
-    }
-
-    @media (min-width: 768px) {
-        .img-wrapper{
-            width: 520px;
-        }
-
-        button {
-            width: 392px;
-        }
-    }
-</style>
-
-<div class="wrapper">
-    <div class="img-wrapper">
-        <img src="{{ URL('storage/email-verification.png') }}" />
-    </div>
-
-    <h2>{{ __('general.recover') }}</h2>
-
-    <h3>{{ __('general.click_for_recover') }}</h3>
-
-    <a href="{{ $url }}">
-        <button>{{ __('general.recover_password') }}</button>
-    </a>
+        <a href="{{ $url }}" style="padding: 5px; max-width: 392px">
+            <button style="font-family: 'Inter';
+                    width: 40%;
+                    height: 56px;
+                    background: #0FBA68;
+                    border-radius: 8px;
+                    font-weight: 900;
+                    font-size: 16px;
+                    color: #FFFFFF;
+                    cursor: pointer;
+                    border: none;"
+            >{{ __('general.recover_password') }}</button>
+        </a>
 </div>
+
+</body>
+</html>
+
 

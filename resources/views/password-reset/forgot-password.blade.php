@@ -2,7 +2,7 @@
     <form method="POST" action="{{ route('password.request') }}">
         @csrf
         <div class="flex items-center mt-10 flex-col">
-            <img src="{{ URL('storage/logo.svg') }}"  />
+            <img src="{{ URL('/images/logo.svg') }}"  />
             <div class="flex flex-col items-center mt-16">
                 <x-title name="{{ __('general.reset_password') }}" class="mb-16" />
 

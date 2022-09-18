@@ -2,7 +2,7 @@
     <form method="POST" action="{{ route('password.update') }}">
         @csrf
         <div class="flex items-center mt-8 flex-col">
-            <img src="{{ URL('storage/logo.svg') }}"  />
+            <img src="{{ URL('/images/logo.svg') }}"  />
 
             <input type="hidden" name="token" value="{{ $token }}">
 

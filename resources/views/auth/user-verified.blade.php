@@ -1,6 +1,6 @@
 <x-layout>
     <x-confirmation name="{{__('general.confirmed_account')}}">
-        <img src="{{ URL('storage/checked.png') }}"  />
+        <img src="{{ URL('/images/checked.png') }}"  />
     </x-confirmation>
 
     <div class="text-center mt-6">
