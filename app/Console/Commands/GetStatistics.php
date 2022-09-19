@@ -39,13 +39,13 @@ class GetStatistics extends Command
 				'code' => $country['code'],
 			])->json();
 
-			$statistic = new Statistic();
-			$statistic->country = $country['name'];
-			$statistic->code = $response['code'];
-			$statistic->confirmed = $response['confirmed'];
-			$statistic->recovered = $response['recovered'];
-			$statistic->deaths = $response['deaths'];
-			$statistic->save();
+			Statistic::updateOrCreate([
+				'country'   => $country['name'],
+				'code'      => $response['code'],
+				'confirmed' => $response['confirmed'],
+				'recovered' => $response['recovered'],
+				'deaths'    => $response['deaths'],
+			]);
 		}
 		return 'Covid statistic has been fetched!';
 	}
