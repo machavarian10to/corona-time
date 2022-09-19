@@ -1,6 +1,5 @@
 <x-layout>
     <form method="POST" action="{{ route('user.login') }}">
-
         @csrf
         <x-auth-template>
             <x-title name="{{ __('general.welcome') }}" />
@@ -13,7 +12,7 @@
             <x-input type="password" name="password" title="{{ __('general.password') }}"
                      placeholder="{{ __('general.password_placeholder') }}" />
 
-            <div>
+            <div class="flex">
                 <x-remember-device />
 
                 <a href="{{ route('forgot.password') }}"
@@ -29,6 +28,7 @@
                              link="{{ route('register') }}"
                              title="{{ __('general.signup_free') }}"
             />
+
         </x-auth-template>
     </form>
 </x-layout>

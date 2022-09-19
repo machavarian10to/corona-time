@@ -5,7 +5,6 @@ namespace App\Console\Commands;
 use App\Models\Statistic;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
-use Ramsey\Uuid\Type\Integer;
 
 class GetStatistics extends Command
 {
@@ -38,13 +37,18 @@ class GetStatistics extends Command
 				'code' => $country['code'],
 			])->json();
 
-			$statistic = new Statistic();
-			$statistic->country = json_encode($country['name']);
-			$statistic->code = $response['code'];
-			$statistic->confirmed = $response['confirmed'];
-			$statistic->recovered = $response['recovered'];
-			$statistic->deaths = $response['deaths'];
-			$statistic->save();
+			Statistic::updateOrCreate(
+				[
+					'id'        => $response['id'],
+				],
+				[
+					'country'   => $country['name'],
+					'code'      => $response['code'],
+					'confirmed' => $response['confirmed'],
+					'recovered' => $response['recovered'],
+					'deaths'    => $response['deaths'],
+				],
+			);
 		}
 		return 'Covid statistic has been fetched!';
 	}

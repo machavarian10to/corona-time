@@ -17,7 +17,12 @@ module.exports = {
             'custom-yellow': '#EAD621',
             'table-header': '#F6F6F7'
         },
+        backgroundImage: {
+            'indigo-block': "url('/public/images/indigo-block.png')",
+            'green-block': "url('/public/images/green-block.png')",
+            'yellow-block': "url('/public/images/yellow-block.png')",
+        }
     },
   },
-  plugins: [],
+    plugins: [require("@tailwindcss/forms")],
 }

@@ -32,6 +32,7 @@
                              link="{{ route('login') }}"
                              title="{{ __('general.login_lower') }}"
             />
+
         </x-auth-template>
     </form>
 </x-layout>
