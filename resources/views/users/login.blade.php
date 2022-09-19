@@ -28,6 +28,7 @@
                              link="{{ route('register') }}"
                              title="{{ __('general.signup_free') }}"
             />
+
         </x-auth-template>
     </form>
 </x-layout>

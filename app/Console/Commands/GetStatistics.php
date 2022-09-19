@@ -29,8 +29,6 @@ class GetStatistics extends Command
 	 */
 	public function handle(): string
 	{
-		Statistic::truncate();
-
 		$countries = Http::get('https://devtest.ge/countries')->json();
 
 		foreach ($countries as $country)
@@ -39,13 +37,18 @@ class GetStatistics extends Command
 				'code' => $country['code'],
 			])->json();
 
-			Statistic::updateOrCreate([
-				'country'   => $country['name'],
-				'code'      => $response['code'],
-				'confirmed' => $response['confirmed'],
-				'recovered' => $response['recovered'],
-				'deaths'    => $response['deaths'],
-			]);
+			Statistic::updateOrCreate(
+				[
+					'id'        => $response['id'],
+				],
+				[
+					'country'   => $country['name'],
+					'code'      => $response['code'],
+					'confirmed' => $response['confirmed'],
+					'recovered' => $response['recovered'],
+					'deaths'    => $response['deaths'],
+				],
+			);
 		}
 		return 'Covid statistic has been fetched!';
 	}

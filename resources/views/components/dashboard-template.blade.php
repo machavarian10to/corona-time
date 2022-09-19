@@ -6,9 +6,7 @@
 
         <div class="flex items-center md:mr-[90px]">
             <div class="cursor-pointer mr-[5px] ml-[15px] md:mr-5">
-                <a href="{{ app()->getLocale() === 'ka' ? route('change.locale', 'en') : route('change.locale', 'ka') }}">
-                    {{ app()->getLocale() === 'ka' ? 'English' : 'ქართული' }}
-                </a>
+                <x-change-language />
             </div>
 
             <h2 class="hidden md:block mx-[40px] font-bold">{{ ucwords(auth()->user()->username) }}</h2>
