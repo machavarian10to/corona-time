@@ -19,19 +19,18 @@ covid19 situation in the world.
 
 ### Prerequisites
 
-* PHP @8.1
-* MYSQL @8 and up
-* npm @6 and up
-* composer @2 and up
-
+* <img src="readme/assets/php.svg" width="35" style="position: relative; top: 4px" alt="php" /> PHP@8.1 and up
+* <img src="readme/assets/mysql.png" width="35" style="position: relative; top: 4px" alt="mysql" /> MYSQL@8 and up
+* <img src="readme/assets/npm.png" width="35" style="position: relative; top: 4px" alt="npm" /> npm@6 and up
+* <img src="readme/assets/composer.png" width="35" style="position: relative; top: 6px" alt="composer" /> composer@2 and up
 
 
 ### Tech Stack
 
-*  [Laravel](https://laravel.com/docs/9.x) - back-end framework
-*  [Spatie Translatable](https://github.com/spatie/laravel-translatable) - package for translation
-*  [Tailwind UI](https://tailwindcss.com/docs/installation) - CSS framework for rapidly building custom UI components.
-*  [Covid API](https://devtest.ge/api) - countries statistic
+* <img src="readme/assets/laravel.png" height="18" style="position: relative; top: 4px" />[Laravel@6.x](https://laravel.com/docs/6.x) - back-end framework
+* <img src="readme/assets/spatie.png" height="19" style="position: relative; top: 4px" />[Spatie Translatable](https://github.com/spatie/laravel-translatable) - package for translation
+* <img src="readme/assets/tailwind.png" height="19" style="position: relative; top: 4px" />[Tailwind UI](https://tailwindcss.com/docs/installation) - CSS framework for rapidly building custom UI components.
+* <img src="readme/assets/alphine.png" height="19" style="position: relative; top: 4px" />[Alphine Js](https://alpinejs.dev/start-here) -  minimal framework for composing js behavior in  markup.
 
 
 ### Getting Started
