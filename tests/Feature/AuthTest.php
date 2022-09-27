@@ -3,7 +3,11 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use Illuminate\Auth\Notifications\ResetPassword;
+use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Password;
 use Tests\TestCase;
 
 class AuthTest extends TestCase
@@ -56,13 +60,22 @@ class AuthTest extends TestCase
 		$response->assertSessionHasErrors(['password']);
 	}
 
+
 	public function test_valid_user_login_successfully(): void
 	{
-		$user = User::factory()->create([
-			'username' => 'username',
-			'password' => 'password',
+		$username = 'username';
+		$password = 'password';
+
+		User::factory()->create([
+			'username' => $username,
+			'password' => bcrypt($password),
 		]);
-		$response = $this->post(route('user.login'), [$user]);
+
+		$response = $this->post(route('user.login'), [
+			'username' => $username,
+			'password' => $password,
+		]);
+
 		$response->assertRedirect(route('dashboard'));
 	}
 
@@ -119,5 +132,63 @@ class AuthTest extends TestCase
 			'password_confirmation' => 'password',
 		]);
 		$response->assertRedirect(route('feedback'));
+	}
+
+	public function test_user_can_verify_email(): void
+	{
+		$notification = new VerifyEmail();
+		$user = User::factory()->create(['email_verified_at' => null]);
+
+		$this->assertFalse($user->hasVerifiedEmail());
+
+		$mail = $notification->toMail($user);
+		$uri = $mail->actionUrl;
+
+		$this->actingAs($user)->get($uri);
+
+		$this->assertTrue(User::find($user->id)->hasVerifiedEmail());
+	}
+
+	public function test_send_password_reset_email(): void
+	{
+		$user = User::factory()->create();
+
+		$this->expectsNotification($user, ResetPassword::class);
+
+		$response = $this->post(route('password.request'), ['email' => $user->email]);
+
+		$response->assertStatus(302);
+	}
+
+	public function test_does_not_send_password_reset_email(): void
+	{
+		$this->doesntExpectJobs(ResetPassword::class);
+
+		$this->post(route('password.request'), ['email' => 'invalid@email.com']);
+	}
+
+	public function test_display_password_reset_form(): void
+	{
+		$user = User::factory()->create();
+		$token = Password::createToken($user);
+
+		$response = $this->get(route('password.reset', $token));
+		$response->assertOk();
+	}
+
+	public function test_changes_users_password(): void
+	{
+		$user = User::factory()->create();
+
+		$token = Password::createToken($user);
+
+		$this->post(route('password.update'), [
+			'token'                 => $token,
+			'email'                 => $user->email,
+			'password'              => 'password',
+			'password_confirmation' => 'password',
+		]);
+
+		$this->assertTrue(Hash::check('password', $user->fresh()->password));
 	}
 }
