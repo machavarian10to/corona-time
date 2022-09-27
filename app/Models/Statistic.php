@@ -18,9 +18,8 @@ class Statistic extends Model
 	{
 		return $query->when(
 			$filters['search'] ?? false,
-			fn ($query, $search) => app()->getLocale() === 'ka' ?
-			$query->where('country->ka', 'like', '%' . $search . '%')
-			: $query->where('country->en', 'like', '%' . substr($search, 1) . '%')
+			fn ($query, $search) => $query->where('country->ka', 'like', '%' . $search . '%')->
+			orWhere('country->en', 'like', '%' . substr($search, 1) . '%')
 		);
 	}
 }

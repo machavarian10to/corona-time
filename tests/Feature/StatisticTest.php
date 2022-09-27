@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Statistic;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -48,10 +49,49 @@ class StatisticTest extends TestCase
 		$response->assertRedirect(route('dashboard'));
 	}
 
-//    public function test_if_locale_is_english_countries_sort_by_english_name(): void
-//    {
-//        $response = $this->actingAs($this->user)->get(route('country'));
-//    }
+	public function test_countries_can_sort_by_english_name(): void
+	{
+		Statistic::factory()->count(3)->create();
 
+		$response = $this->actingAs($this->user)->get(route('country'), [
+			'sortby'    => 'country',
+			'direction' => 'desc',
+		]);
 
+		$response->assertSuccessful();
+
+//		$response->assertViewHas([
+//			'statistics' => $statistics,
+//		]);
+	}
+
+//    public function test_countries_can_sort_by_georgian_name(): void
+//	{
+//		Statistic::factory()->count(3)->create();
+//
+//		$sortby = 'country';
+//		$sortDirection = 'desc';
+//
+//		$response = $this->actingAs($this->user)->get(route('country'), [
+//			'sortby'    => $sortby,
+//			'direction' => $sortDirection,
+//		]);
+//
+//		$statistics = Statistic::orderBy(, $sortDirection)->get();
+//		$response->assertViewHas([
+//			'statistics' => $statistics,
+//		]);
+//	}
+
+	public function test_user_can_search_country_by_english_name(): void
+	{
+		$response = $this->actingAs($this->user)->get(route('country', 'search=d'));
+		$response->assertSuccessful();
+	}
+
+	public function test_user_can_search_country_by_georgian_name(): void
+	{
+		$response = $this->actingAs($this->user)->get(route('country', 'search=დ'));
+		$response->assertSuccessful();
+	}
 }

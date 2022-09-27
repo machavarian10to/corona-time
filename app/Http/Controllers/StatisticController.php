@@ -20,11 +20,7 @@ class StatisticController extends Controller
 		$sortby = $request->sortby ?? 'created_at';
 		$sortDirection = $request->direction ?? 'asc';
 
-		if ($sortby === 'country')
-		{
-			$sortby = app()->currentLocale() === 'en'
-				? $sortby . '->en' : $sortby . '->ka';
-		}
+		$sortby = ($sortby === 'country' && app()->currentLocale() === 'en') ? $sortby . '->en' : (($sortby === 'country' && app()->currentLocale() === 'ka') ? $sortby . '->ka' : $sortby);
 
 		return view('country', [
 			'general'         => Statistic::all(),
