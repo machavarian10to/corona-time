@@ -18,14 +18,14 @@ class RegisterController extends Controller
 			'email'    => $request->email,
 			'password' => bcrypt($request->password),
 		]);
-		event(new Registered($user, $request->has('remember')));
+		event(new Registered($user));
+        auth()->login($user);
 		return redirect()->route('feedback');
 	}
 
 	public function verify(EmailVerificationRequest $request): RedirectResponse
 	{
 		$request->fulfill();
-		auth()->logout();
 
 		return redirect()->route('user.verified');
 	}
